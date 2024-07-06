@@ -8,7 +8,7 @@ using UnityEngine;
  */
 public class PlayerInfo : MonoBehaviour
 {
-    public int health = 3;
+    public int health = 3000;
     public GameObject player;
     public GameObject playerUI;
         

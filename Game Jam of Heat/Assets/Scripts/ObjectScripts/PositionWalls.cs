@@ -12,16 +12,18 @@ public class PositionWalls : MonoBehaviour
         float roomWidth = 16f; // Width of the room
         float roomHeight = 9f; // Height of the room
         float wallThickness = 0.3f;
+        // Get the position of the Room object this script is attached to
+        Vector3 roomPosition = transform.position;
 
         // Calculate positions
         float halfRoomWidth = roomWidth / 2;
         float halfRoomHeight = roomHeight / 2;
 
         // Position walls
-        leftWall.transform.position = new Vector3(-halfRoomWidth + wallThickness / 2, 0, 0);
-        rightWall.transform.position = new Vector3(halfRoomWidth - wallThickness / 2, 0, 0);
-        topWall.transform.position = new Vector3(0, (halfRoomHeight - wallThickness / 2) - 0.6f, 0);    
-        bottomWall.transform.position = new Vector3(0, -halfRoomHeight + wallThickness / 2, 0);
+        leftWall.transform.position = new Vector3(roomPosition.x - halfRoomWidth + wallThickness / 2, roomPosition.y, roomPosition.z);
+        rightWall.transform.position = new Vector3(roomPosition.x + halfRoomWidth - wallThickness / 2, roomPosition.y, roomPosition.z);
+        topWall.transform.position = new Vector3(roomPosition.x, roomPosition.y + halfRoomHeight - wallThickness / 2 - 0.6f, roomPosition.z);
+        bottomWall.transform.position = new Vector3(roomPosition.x, roomPosition.y - halfRoomHeight + wallThickness / 2, roomPosition.z);
 
         // Set wall sizes
         leftWall.transform.localScale = new Vector3(wallThickness, roomHeight, 1);
