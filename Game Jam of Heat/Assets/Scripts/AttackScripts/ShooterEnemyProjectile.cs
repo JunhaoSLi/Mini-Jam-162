@@ -30,6 +30,10 @@ public class ShooterEnemyProjectile : MonoBehaviour
             collision2D.gameObject.GetComponent<PlayerInfo>().TakeDamage(1);
             Destroy(gameObject);
         }
+        else if (collision2D.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            Destroy(gameObject);
+        }
     }
 
 }

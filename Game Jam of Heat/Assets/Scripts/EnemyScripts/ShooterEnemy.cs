@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShooterEnemy : MonoBehaviour
+public class ShooterEnemy : Enemy
 {
     private float timeSinceLastAttack = 0;
     private float attackCooldownSec = 2;
@@ -19,7 +19,7 @@ public class ShooterEnemy : MonoBehaviour
     void Update()
     {
         timeSinceLastAttack += Time.deltaTime;
-        if (timeSinceLastAttack > attackCooldownSec)
+        if (timeSinceLastAttack > attackCooldownSec && player.activeSelf)
         {
             // Get direction towards player
             Vector2 vectorToPlayer = player.transform.position - transform.position;

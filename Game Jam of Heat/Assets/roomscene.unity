@@ -1348,7 +1348,7 @@ Camera:
   far clip plane: 1000
   field of view: 31.2
   orthographic: 1
-  orthographic size: 5.41961
+  orthographic size: 37.1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1469,8 +1469,8 @@ MonoBehaviour:
   roomCamera: {fileID: 0}
   maxRooms: 20
   minRooms: 15
-  gridX: 10
-  gridY: 10
+  gridX: 15
+  gridY: 15
 --- !u!4 &1790736096
 Transform:
   m_ObjectHideFlags: 0
@@ -1611,6 +1611,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  meleeAttackPrefab: {fileID: 0}
 --- !u!1 &1956891736
 GameObject:
   m_ObjectHideFlags: 0

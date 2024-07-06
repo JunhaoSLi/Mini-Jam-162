@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public ContactFilter2D movementFilter;
 
+    public GameObject meleeAttackPrefab;
+    private float meleeAttackCooldownSec = 2;
+    private float timeSinceLastMeleeAttack = 0;
+    private bool meleeOnCooldown = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +25,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeSinceLastMeleeAttack += Time.deltaTime;
+        if (timeSinceLastMeleeAttack > meleeAttackCooldownSec)
+        {
+            meleeOnCooldown = false;
+        }
 
+
+        if (Input.GetMouseButtonDown(0) && !meleeOnCooldown)
+        {
+
+            Vector2 meleeDirection = movementInput.normalized;
+            if (movementInput == Vector2.zero)
+            {
+                meleeDirection = Vector2.right;
+            }
+
+            Quaternion rotationTowardsMovement = Quaternion.LookRotation(Vector3.forward, meleeDirection);
+            Vector3 meleePosition = transform.position + ((Vector3) meleeDirection * 1.5f);
+            Instantiate(meleeAttackPrefab, meleePosition, rotationTowardsMovement, transform);
+            timeSinceLastMeleeAttack = 0;
+        }
     }
 
     // called every 0.02 seconds
