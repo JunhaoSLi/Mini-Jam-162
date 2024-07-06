@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6432854391109613860}
   - component: {fileID: 1133196972997475339}
   - component: {fileID: 8473496863325192271}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: South Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

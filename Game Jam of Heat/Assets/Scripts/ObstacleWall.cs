@@ -21,7 +21,8 @@ public class ObstacleWall : MonoBehaviour
     {
         if(collision2D.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player took damage");
+            Debug.Log("player took damage");
+            collision2D.gameObject.GetComponent<PlayerInfo>().TakeDamage(1);
         }
     }
 }

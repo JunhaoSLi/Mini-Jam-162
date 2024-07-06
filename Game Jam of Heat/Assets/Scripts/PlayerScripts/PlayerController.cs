@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     Vector2 movementInput;
     Rigidbody2D rb;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
-    ContactFilter2D movementFilter;
+    public ContactFilter2D movementFilter;
 
     // Start is called before the first frame update
     void Start()
