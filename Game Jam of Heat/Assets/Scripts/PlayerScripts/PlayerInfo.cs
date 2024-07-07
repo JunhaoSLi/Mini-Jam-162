@@ -10,15 +10,14 @@ public class PlayerInfo : MonoBehaviour
 {
     public int health = 3000;
     public GameObject player;
-    public GameObject playerUI;
-        
+    public GameObject healthBarUi;
+    public GameObject itemsUi;
+    public List<Item> playerItems { get; } = new List<Item>();
+
     // Start is called before the first frame update
     void Start()
     {
-        if (player == null || playerUI == null)
-        {
-            return;
-        }
+
     }
 
     // Update is called once per frame
@@ -31,10 +30,19 @@ public class PlayerInfo : MonoBehaviour
     {
         int prevHealth = health;
         health -= damage;
-        playerUI.GetComponent<HealthBarManager>().TakeDamage(prevHealth, damage);
+        healthBarUi.GetComponent<HealthBarManager>().TakeDamage(prevHealth, damage);
         if (health <= 0)
         {
             player.SetActive(false);
+        }
+    }
+
+    public void GetNewItem(Item newItem)
+    {
+        if (!playerItems.Contains(newItem))
+        {
+            playerItems.Add(newItem);
+            itemsUi.GetComponent<ItemsDisplayManager>().DisplayNewItem(newItem);
         }
     }
 

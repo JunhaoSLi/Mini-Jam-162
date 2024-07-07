@@ -12,35 +12,70 @@ public class PlayerController : MonoBehaviour
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public ContactFilter2D movementFilter;
 
+    private PlayerInfo playerInfo;
+
     public GameObject meleeAttackPrefab;
     private float meleeAttackCooldownSec = 0.6f;
     private float timeSinceLastMeleeAttack = 0;
     private bool meleeOnCooldown = false;
 
+    private float itemsCooldownSec = 1f;
+    private float timeSinceLastItemsUse = 0;
+    private bool itemsOnCooldown = false;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerInfo = GetComponent<PlayerInfo>();
     }
 
     // Update is called once per frame
     void Update()
     {
         timeSinceLastMeleeAttack += Time.deltaTime;
+        timeSinceLastItemsUse += Time.deltaTime;
         if (timeSinceLastMeleeAttack > meleeAttackCooldownSec)
         {
             meleeOnCooldown = false;
         }
-
+        if (timeSinceLastItemsUse > itemsCooldownSec)
+        {
+            itemsOnCooldown = false;
+        }
 
         if (Input.GetMouseButtonDown(0) && !meleeOnCooldown)
         {
+            // Send out a melee attack
             Vector2 meleeDirection = facingDirection.normalized;
             Quaternion rotationTowardsMovement = Quaternion.LookRotation(Vector3.forward, meleeDirection);
             Vector3 meleePosition = transform.position + ((Vector3) meleeDirection * 1.5f);
             Instantiate(meleeAttackPrefab, meleePosition, rotationTowardsMovement, transform);
             timeSinceLastMeleeAttack = 0;
             meleeOnCooldown = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && !itemsOnCooldown && playerInfo.playerItems.Count != 0)
+        {
+            // Use items
+            if (playerInfo.playerItems.Contains(Item.VolcanoOrb))
+            {
+                // Destroy all nearby enemies
+                // This is just a random effect I picked to test items and has flaws like killing enemies in other rooms
+                LayerMask enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
+                Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(transform.position, 256, enemyLayerMask);
+                foreach (Collider2D collider in enemyColliders)
+                {
+                    Destroy(collider.gameObject);
+                }
+            }
+            if (playerInfo.playerItems.Contains(Item.YellowRings))
+            {
+                // Turn player yellow, another random effect I picked to test items
+                GetComponent<SpriteRenderer>().color = Color.yellow;
+            }
+            timeSinceLastItemsUse = 0;
+            itemsOnCooldown = true;
         }
     }
 

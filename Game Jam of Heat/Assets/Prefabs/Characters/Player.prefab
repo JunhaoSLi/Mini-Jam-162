@@ -195,7 +195,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   player: {fileID: 417849206901984484}
-  playerUI: {fileID: 0}
+  healthBarUi: {fileID: 0}
+  itemsUi: {fileID: 0}
 --- !u!114 &7565374916753656560
 MonoBehaviour:
   m_ObjectHideFlags: 0
