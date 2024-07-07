@@ -7,12 +7,13 @@ public class PlayerController : MonoBehaviour
 {
     private float moveSpeed = 6.25f;
     Vector2 movementInput;
+    Vector2 facingDirection = Vector2.right;
     Rigidbody2D rb;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public ContactFilter2D movementFilter;
 
     public GameObject meleeAttackPrefab;
-    private float meleeAttackCooldownSec = 2;
+    private float meleeAttackCooldownSec = 0.6f;
     private float timeSinceLastMeleeAttack = 0;
     private bool meleeOnCooldown = false;
 
@@ -34,17 +35,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && !meleeOnCooldown)
         {
-
-            Vector2 meleeDirection = movementInput.normalized;
-            if (movementInput == Vector2.zero)
-            {
-                meleeDirection = Vector2.right;
-            }
-
+            Vector2 meleeDirection = facingDirection.normalized;
             Quaternion rotationTowardsMovement = Quaternion.LookRotation(Vector3.forward, meleeDirection);
             Vector3 meleePosition = transform.position + ((Vector3) meleeDirection * 1.5f);
             Instantiate(meleeAttackPrefab, meleePosition, rotationTowardsMovement, transform);
             timeSinceLastMeleeAttack = 0;
+            meleeOnCooldown = true;
         }
     }
 
@@ -87,6 +83,10 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
+        if (movementInput != Vector2.zero)
+        {
+            facingDirection = movementInput;
+        }
     }
 
 }

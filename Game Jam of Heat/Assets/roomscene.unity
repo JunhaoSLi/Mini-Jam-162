@@ -1110,12 +1110,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 417849206901984484, guid: fd78045cfcbedbc4aab478608c262864, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1892321456}
-    - targetCorrespondingSourceObject: {fileID: 417849206901984484, guid: fd78045cfcbedbc4aab478608c262864, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1892321457}
-    - targetCorrespondingSourceObject: {fileID: 417849206901984484, guid: fd78045cfcbedbc4aab478608c262864, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1892321458}
   m_SourcePrefab: {fileID: 100100000, guid: fd78045cfcbedbc4aab478608c262864, type: 3}
 --- !u!1 &1706446584
 GameObject:
@@ -1209,7 +1203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1710771501
 Transform:
   m_ObjectHideFlags: 0
@@ -1570,48 +1564,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4938b95d6af68964885878d00968d957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1892321457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892321441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cb097d07d2b69f48ad9550aaf3f085d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 30003
-  player: {fileID: 1892321441}
-  playerUI: {fileID: 537695999}
---- !u!114 &1892321458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892321441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b8fec308ebe29b4c8317968b1d87398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementFilter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  meleeAttackPrefab: {fileID: 0}
 --- !u!1 &1956891736
 GameObject:
   m_ObjectHideFlags: 0

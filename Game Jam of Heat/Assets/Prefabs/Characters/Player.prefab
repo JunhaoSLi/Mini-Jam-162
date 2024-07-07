@@ -222,3 +222,4 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  meleeAttackPrefab: {fileID: 4470023067286028382, guid: 5cdf3d28b96d4784aa9840e07d43b792, type: 3}

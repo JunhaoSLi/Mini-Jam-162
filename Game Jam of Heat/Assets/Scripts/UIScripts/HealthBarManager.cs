@@ -32,7 +32,10 @@ public class HealthBarManager : MonoBehaviour
     {
         int origHealthIdx = origHealth - 1;
         int newHealthIdx = origHealth - damage - 1;
-        newHealthIdx = Math.Max(newHealthIdx, -1); // Bounds check for if we take a lot of damage at once
+        
+        // Bounds checking
+        origHealthIdx = Math.Min(origHealthIdx, playerHp.Count - 1);
+        newHealthIdx = Math.Max(newHealthIdx, -1);
 
         // Start from the highest health block and count down
         for (int i = origHealthIdx; i > newHealthIdx; i--)

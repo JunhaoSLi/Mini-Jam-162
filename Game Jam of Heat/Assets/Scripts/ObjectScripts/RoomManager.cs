@@ -21,6 +21,7 @@ public class RoomManager : MonoBehaviour
     private int[,] roomGrid;
     private int roomCount;
     private bool generationComplete = false;
+    private GameObject startingRoom;
 
     private void Start()
     {
@@ -48,6 +49,7 @@ public class RoomManager : MonoBehaviour
         {
             Debug.Log($"Generation Complete, {roomCount} rooms created");
             generationComplete = true;
+            startingRoom.GetComponent<Room>().Activate();
         } 
         else if (roomCount < minRooms)
         {
@@ -74,6 +76,7 @@ public class RoomManager : MonoBehaviour
         initialRoom.name = $"Room-{roomCount}";
         initialRoom.GetComponent<Room>().RoomIndex = roomIndex;
         roomObjects.Add(initialRoom);
+        startingRoom = initialRoom;
     }
 
     /** 

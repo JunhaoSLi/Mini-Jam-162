@@ -9,6 +9,7 @@ public class Room : MonoBehaviour
     [SerializeField] GameObject northDoor;
     [SerializeField] GameObject southDoor;
     [SerializeField] GameObject roomCamera;
+    [SerializeField] RoomEnemiesManager roomEnemiesManager;
 
     public Vector2Int RoomIndex { get; set; }
 
@@ -41,13 +42,15 @@ public class Room : MonoBehaviour
         }
     }
 
-    public void ActivateCamera()
+    public void Activate()
     {
         roomCamera.SetActive(true);
+        roomEnemiesManager.ActivateEnemies();
     }
 
-    public void DeactivateCamera()
+    public void Deactivate()
     {
         roomCamera.SetActive(false);
+        roomEnemiesManager.DeactivateEnemies();
     }
 }

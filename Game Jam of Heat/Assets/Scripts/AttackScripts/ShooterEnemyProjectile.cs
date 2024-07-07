@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShooterEnemyProjectile : MonoBehaviour
 {
     private Vector2 direction;
-    private float speed = 1f;
+    private float speed = 2f;
 
     // Start is called before the first frame update
     void Start()

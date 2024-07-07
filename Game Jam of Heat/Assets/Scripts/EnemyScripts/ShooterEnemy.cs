@@ -5,21 +5,22 @@ using UnityEngine;
 public class ShooterEnemy : Enemy
 {
     private float timeSinceLastAttack = 0;
-    private float attackCooldownSec = 2;
+    private float attackCooldownSec = 2.5f;
     public GameObject projectilePrefab;
-    public GameObject player; // right now, just set the reference to the player via the UI, this will probably need to change
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        // Below line is not good for performance probably, have rooms 
+        player = GameObject.FindWithTag("Player");
     }
 
     // called every frame
     void Update()
     {
         timeSinceLastAttack += Time.deltaTime;
-        if (timeSinceLastAttack > attackCooldownSec && player.activeSelf)
+        if (timeSinceLastAttack > attackCooldownSec && player != null && player.activeSelf)
         {
             // Get direction towards player
             Vector2 vectorToPlayer = player.transform.position - transform.position;
